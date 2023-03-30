@@ -21,3 +21,15 @@ task sayGoodbye {
         println "Goodbye from Gradle!"
     }
 }
+
+task deleteZip(type: Delete) {
+    delete "build/project.zip"
+}
+
+task zipProject(type: Zip) {
+    dependsOn deleteZip
+    from '.'
+    destinationDirectory = file("build")
+    archiveFileName = "project.zip"
+    exclude "build/**"
+}
