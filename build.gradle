@@ -14,3 +14,10 @@ task sayHello {
         println "Hello from Gradle!"
     }
 }
+
+task sayGoodbye {
+    dependsOn sayHello
+    doLast {
+        println "Goodbye from Gradle!"
+    }
+}
