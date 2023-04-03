@@ -1,6 +1,5 @@
 @file:Suppress("UnstableApiUsage")
 
-import java.io.FileInputStream
 import java.util.*
 
 // This suppress annotation is a patch required until Gradle 8.1 is released
@@ -28,10 +27,7 @@ android {
         }
     }
 
-    // Load keystore
-    val keystorePropertiesFile = rootProject.file("keystore.properties")
-    val keystoreProperties = Properties()
-    keystoreProperties.load(FileInputStream(keystorePropertiesFile))
+    val keystoreProperties = rootProject.loadProperties("keystore.properties")
 
     signingConfigs {
         create("release") {
